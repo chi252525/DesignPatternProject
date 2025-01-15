@@ -66,17 +66,7 @@ public abstract class Player {
     }
   }
 
-  public Card showCard() {
-
-    if (cardsInHand.isEmpty()) { // 手牌為空
-      return null;
-    }
-    Random random = new Random();
-    Card card = cardsInHand.get(random.nextInt(cardsInHand.size()));
-    System.out.println(this.name + "出牌 " + card.toString());
-    cardsInHand.remove(card);
-    return card;
-  }
+  public abstract Card showCard() ;
 
   public void showCardsInHand() {
     System.out.println(this.name + "手上的牌:");
