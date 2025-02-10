@@ -4,17 +4,21 @@ import java.util.List;
 import org.example.Coord;
 import org.example.Individual;
 
-public class DistanceBasedMatchmakingStrategy implements MatchmakingStrategy{
+public class DistanceBasedMatchmakingStrategy implements MatchmakingStrategy {
+
   @Override
   public Individual match(Individual individual, List<Individual> candidates) {
     Individual closestMatch = null;
     double closestDistance = Double.MAX_VALUE;
 
     for (Individual candidate : candidates) {
-      if (candidate.equals(individual)) continue;  // 跳過自己
+      if (candidate.equals(individual)) {
+        continue;  // 跳過自己
+      }
 
       double distance = calculateDistance(individual.getCoord(), candidate.getCoord());
-      if (distance < closestDistance || (distance == closestDistance && candidate.getId() < closestMatch.getId())) {
+      if (distance < closestDistance || (distance == closestDistance
+          && candidate.getId() < closestMatch.getId())) {
         closestDistance = distance;
         closestMatch = candidate;
       }

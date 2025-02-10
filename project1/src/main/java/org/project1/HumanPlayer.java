@@ -3,7 +3,7 @@ package org.project1;
 import java.util.List;
 import java.util.Scanner;
 
-public class HumanPlayer extends Player{
+public class HumanPlayer extends Player {
 
   public HumanPlayer(String name) {
     super(name + " (HumanPlayer)");
@@ -20,7 +20,8 @@ public class HumanPlayer extends Player{
     // 玩家手牌
     List<Card> cardsInHand = getCardsInHand();
     for (int i = 0; i < cardsInHand.size(); i++) {
-      System.out.println((i + 1) + ". " + cardsInHand.get(i) + "card: "+ cardsInHand.get(i).toString()); // 输出手牌和对应的索引
+      System.out.println((i + 1) + ". " + cardsInHand.get(i) + "card: " + cardsInHand.get(i)
+          .toString()); // 输出手牌和对应的索引
     }
 
     Scanner scanner = new Scanner(System.in);

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<component jdk="corretto-11" jdk_type="JavaSDK">
+<component inheritJdk="true">
 	<exclude-output/>
 	<contentEntry url="file://$MODULE_DIR$/../../project2/src/main"/>
 </component>

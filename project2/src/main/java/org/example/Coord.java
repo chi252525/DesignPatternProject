@@ -1,6 +1,7 @@
 package org.example;
 
 public class Coord {
+
   private double x;  // X軸座標
   private double y;  // Y軸座標
 

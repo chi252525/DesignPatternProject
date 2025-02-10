@@ -6,7 +6,8 @@ import java.util.List;
 import java.util.Set;
 import org.example.Individual;
 
-public class ReverseMatchmakingStrategy implements MatchmakingStrategy{
+public class ReverseMatchmakingStrategy implements MatchmakingStrategy {
+
   private MatchmakingStrategy originalStrategy;
 
   // 建構子，傳入原始的配對策略

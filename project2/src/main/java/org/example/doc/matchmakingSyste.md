@@ -10,9 +10,11 @@
 性別 (Gender)：MALE 表示男生、FEMALE 表示女生
 年紀 (Age)：正整數；至少 18 歲。
 自我介紹 (Intro)：長度約 0~200 的文字。
-興趣 (Habits)：可以為多個興趣，每個興趣以 1~10 長度的文字表示，每個興趣之間以一個逗號隔開。例如：打籃球, 煮菜, 玩遊戲
+興趣 (Habits)：可以為多個興趣，每個興趣以 1~10 長度的文字表示，每個興趣之間以一個逗號隔開。例如：打籃球,
+煮菜, 玩遊戲
 座標 (Coord)：以 (x, y) 表示該用戶所在的 x 軸和 y 軸的位置。
-你要撰寫一個配對系統 (Matchmaking System)，系統會幫每位用戶配對最適合他的用戶， 而你的系統主要提供了兩種配對策略，並且未來會持續新增新的策略：
+你要撰寫一個配對系統 (Matchmaking System)，系統會幫每位用戶配對最適合他的用戶，
+而你的系統主要提供了兩種配對策略，並且未來會持續新增新的策略：
 
 距離先決 (Distance-Based)： 配對與自己距離最近的對象（距離相同則選擇編號較小的那位）。
 假設自己的座標為
@@ -44,10 +46,12 @@ x
 2
 
 興趣先決 (Habit-Based)： 配對與自己興趣擁有最大交集量的對象（興趣交集量相同則選擇編號較小的那位）。
-不過，也有用戶喜歡認識更多元的人，因此你的系統還要為你每個策略提供「反向 (reverse)」的實作版本，像是把距離先決的策略改成是配對與自己距離最遠的對象，而把興趣先決改成是配對與自己興趣擁有最小交集量的對象。
+不過，也有用戶喜歡認識更多元的人，因此你的系統還要為你每個策略提供「反向 (reverse)
+」的實作版本，像是把距離先決的策略改成是配對與自己距離最遠的對象，而把興趣先決改成是配對與自己興趣擁有最小交集量的對象。
 
 設計需求（非功能性需求）
-由於客戶會不斷研發新的配對策略，我們希望系統能夠允許 Client (程式中系統的使用方，通常會是你的 Main method）能在外部抽換系統的配對策略。
+由於客戶會不斷研發新的配對策略，我們希望系統能夠允許 Client (程式中系統的使用方，通常會是你的 Main
+method）能在外部抽換系統的配對策略。
 
 道館作答叮嚀
 請務必模仿「景點 - 策略模式｜基礎水平行為擴充」這部影片中的思路示範，要遵照底下思路來套用設計模式：
@@ -69,7 +73,8 @@ OOA 的圖除了建模之外，還要捕捉底下幾者：
 進階挑戰題
 你想得到如何遵守以下條件來來實踐需求 (3) —— 反向策略嗎？
 
-「配對系統類別/距離先決策略/興趣先決」類別不能直接耦合「反向 (Reverse)」的概念，也不能使用 boolean 欄位 (e.g., reverse: boolean) 或是參數 (e.g., match(…, …, reverse: boolean)) 來區分正反向。
+「配對系統類別/距離先決策略/興趣先決」類別不能直接耦合「反向 (Reverse)」的概念，也不能使用 boolean 欄位 (
+e.g., reverse: boolean) 或是參數 (e.g., match(…, …, reverse: boolean)) 來區分正反向。
 以下這些都是被禁止的錯誤示範：
 new MatchmakingSystem(new DistanceBasedMatchmakingStrategy(), Reverse=True) (X)
 matchMakingSystem.match(individual, Reverse=True) (X)
@@ -84,13 +89,17 @@ matchMakingSystem.reverse() (X)
 
 由於這一題是「策略模式」的題目，所以你肯定知道這一題就是要套「策略模式」。不過，在這門旅程中要學的是「精準設計」，所以你要趁在這一題比較簡單的題目中，就趕緊試試看「精準設計」的思路。
 
-也就是說，你不能只是套用策略模式，你必須先「察覺 Forces（拘束）」，從需求和非功能性需求中，你辨識出了哪些已在策略模式的案例影片中學過的 Forces 呢？
+也就是說，你不能只是套用策略模式，你必須先「察覺 Forces（拘束）」，從需求和非功能性需求中，你辨識出了哪些已在策略模式的案例影片中學過的
+Forces 呢？
 
-請在 UML 上使用「紅色的箭頭」來繪製 Forces，把 Forces 放在相關的行為/結構附近，並將衝突的 Forces 定義成一道 Problem，用便條紙來表達 Problem，看起來就像這個樣子：
+請在 UML 上使用「紅色的箭頭」來繪製 Forces，把 Forces 放在相關的行為/結構附近，並將衝突的 Forces 定義成一道
+Problem，用便條紙來表達 Problem，看起來就像這個樣子：
 
 c2m6-0
 
-如果你真的佐證了策略模式的必要之處，那你一定至少會在某些類別附近，察覺了至少兩道 Conflicting Forces，並基於這兩道 Forces 來定義 Problem。而這兩道 Forces 符合策略模式所解決的 Conflicting Forces，所以才證明了你能夠套用策略模式。
+如果你真的佐證了策略模式的必要之處，那你一定至少會在某些類別附近，察覺了至少兩道 Conflicting
+Forces，並基於這兩道 Forces 來定義 Problem。而這兩道 Forces 符合策略模式所解決的 Conflicting
+Forces，所以才證明了你能夠套用策略模式。
 
 試試看吧！
 
@@ -109,7 +118,8 @@ c2m6-0
 
 系統會幫每位用戶配對最適合他的用戶⋯⋯」從第二句話來看，「配對」是否是一個系統的動作？
 我們可以從需求 2a 和 2b 發現配對策略的行為變動性，將此行為變動性的兩道行為變種記錄在便條紙中，作為「配對行為」的註釋。
-需求 3：「因此你的系統還要為你每個策略提供「反向 (reverse)」的實作版本⋯⋯」正反向與否也多增添了一道行為變動的方向，將它加進「配對行為」的註釋便條紙中。
+需求 3：「因此你的系統還要為你每個策略提供「反向 (reverse)
+」的實作版本⋯⋯」正反向與否也多增添了一道行為變動的方向，將它加進「配對行為」的註釋便條紙中。
 
 如此一來就畫完 OOA 的類別圖囉！再來我們做 OOD：
 「配對行為」的註釋中描述著兩道行為變種：
@@ -120,7 +130,10 @@ c2m6-0
 
 怎麼套策略模式？首先依賴反轉之重構三步驟：
 Encapsulate what varies：將 2a, 2b 的行為變種各開一個類別封裝起來。
-Abstract common behaviors：觀察一下 2a, 2b 這兩個行為變種有什麼「共同行為」，創建一個介面 (Interface)—— MatchmakingStrategy 是一個好名字，並將此共同行為萃取至介面中。
-Delegation / Composition：原本是 Matchmaking System 要負責實現配對策略，現在將此職責委派給你開出來的 MatchmakingStrategy 介面。
-然後至程式碼中套依賴注入模式——將 Matchmaking System 的依賴 (MatchmakingStrategy) 從 Matchmaking System 的建構子或是 setter 傳進去。
+Abstract common behaviors：觀察一下 2a, 2b 這兩個行為變種有什麼「共同行為」，創建一個介面 (Interface)——
+MatchmakingStrategy 是一個好名字，並將此共同行為萃取至介面中。
+Delegation / Composition：原本是 Matchmaking System 要負責實現配對策略，現在將此職責委派給你開出來的
+MatchmakingStrategy 介面。
+然後至程式碼中套依賴注入模式——將 Matchmaking System 的依賴 (MatchmakingStrategy) 從 Matchmaking
+System 的建構子或是 setter 傳進去。
 所以你可以撰寫這種程式碼：new MatchmakingSystem(new DistanceBasedMatchmakingStrategy())

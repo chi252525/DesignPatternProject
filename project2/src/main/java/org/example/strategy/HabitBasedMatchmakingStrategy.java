@@ -6,17 +6,21 @@ import java.util.List;
 import java.util.Set;
 import org.example.Individual;
 
-public class HabitBasedMatchmakingStrategy implements MatchmakingStrategy{
+public class HabitBasedMatchmakingStrategy implements MatchmakingStrategy {
+
   @Override
   public Individual match(Individual individual, List<Individual> candidates) {
     Individual bestMatch = null;
     int maxCommonInterests = -1;
 
     for (Individual candidate : candidates) {
-      if (candidate.equals(individual)) continue;  // 跳過自己
+      if (candidate.equals(individual)) {
+        continue;  // 跳過自己
+      }
 
       int commonInterests = calculateCommonInterests(individual.getHabits(), candidate.getHabits());
-      if (commonInterests > maxCommonInterests || (commonInterests == maxCommonInterests && candidate.getId() < bestMatch.getId())) {
+      if (commonInterests > maxCommonInterests || (commonInterests == maxCommonInterests
+          && candidate.getId() < bestMatch.getId())) {
         maxCommonInterests = commonInterests;
         bestMatch = candidate;
       }

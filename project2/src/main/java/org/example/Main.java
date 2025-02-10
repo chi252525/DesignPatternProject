@@ -19,16 +19,12 @@ public class Main {
     Individual user4 = new Individual(4, Gender.FEMALE, 26, "Fitness lover", "yoga, basketball",
         new Coord(5, 5));
 
-
     List<Individual> candidates = Arrays.asList(user2, user3, user4);
-
 
     MatchingSystem matchingSystem = new MatchingSystem(new DistanceBasedMatchmakingStrategy());
 
-
     Individual bestMatch = matchingSystem.findMatch(user1, candidates);
     System.out.println("Best match (Distance-based): " + bestMatch.getId());
-
 
     matchingSystem.setStrategy(
         new ReverseMatchmakingStrategy(new DistanceBasedMatchmakingStrategy()));

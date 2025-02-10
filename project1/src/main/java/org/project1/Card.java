@@ -1,6 +1,7 @@
 package org.project1;
 
 public class Card implements Comparable<Card> {
+
   private Suit suit;
   private Rank rank;
 
@@ -24,7 +25,7 @@ public class Card implements Comparable<Card> {
 
   @Override
   public int compareTo(Card other) {
-    if(rank.getOrder() == other.rank.getOrder()) {
+    if (rank.getOrder() == other.rank.getOrder()) {
       return suit.getOrder() - other.suit.getOrder();
     }
     return rank.getOrder() - other.rank.getOrder();

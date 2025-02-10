@@ -30,13 +30,15 @@ public class Exchange {
 
   public void countDown() {
     if (currentCount == 0) {
-      System.out.println(self.getName() + "和" + exchangee.getName() + "剩餘次數為 0 :" + currentCount);
+      System.out.println(
+          self.getName() + "和" + exchangee.getName() + "剩餘次數為 0 :" + currentCount);
       exchangeHandCards(exchangee, self);//交换回來手牌
       System.out.println(self.getName() + "和" + exchangee.getName() + "換回手牌");
       return;
     }
     currentCount--;
-    System.out.println(self.getName() + "和" + exchangee.getName() + "交換中 剩餘次數" + currentCount);
+    System.out.println(
+        self.getName() + "和" + exchangee.getName() + "交換中 剩餘次數" + currentCount);
   }
 
   public boolean isExchange() {

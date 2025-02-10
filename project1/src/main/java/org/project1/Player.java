@@ -66,7 +66,7 @@ public abstract class Player {
     }
   }
 
-  public abstract Card showCard() ;
+  public abstract Card showCard();
 
   public void showCardsInHand() {
     System.out.println(this.name + "手上的牌:");
