@@ -1,4 +1,4 @@
-package project1;
+package org.example;
 
 public class Coord {
   private double x;  // X軸座標

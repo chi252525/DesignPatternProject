@@ -1,8 +1,8 @@
-package project1.strategy;
+package org.example.strategy;
 
 import java.util.List;
-import project1.Coord;
-import project1.Individual;
+import org.example.Coord;
+import org.example.Individual;
 
 public class DistanceBasedMatchmakingStrategy implements MatchmakingStrategy{
   @Override

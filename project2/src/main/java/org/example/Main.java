@@ -1,10 +1,10 @@
-package project1;
+package org.example;
 
 import java.util.Arrays;
 import java.util.List;
-import project1.Individual.Gender;
-import project1.strategy.DistanceBasedMatchmakingStrategy;
-import project1.strategy.ReverseMatchmakingStrategy;
+import org.example.Individual.Gender;
+import org.example.strategy.DistanceBasedMatchmakingStrategy;
+import org.example.strategy.ReverseMatchmakingStrategy;
 
 public class Main {
 

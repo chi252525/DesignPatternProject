@@ -1,10 +1,10 @@
-package project1.strategy;
+package org.example.strategy;
 
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import project1.Individual;
+import org.example.Individual;
 
 public class ReverseMatchmakingStrategy implements MatchmakingStrategy{
   private MatchmakingStrategy originalStrategy;

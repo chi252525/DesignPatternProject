@@ -1,4 +1,4 @@
-package project1;
+package org.example;
 
 import java.util.Objects;
 

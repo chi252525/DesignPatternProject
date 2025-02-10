@@ -1,7 +1,7 @@
-package project1;
+package org.example;
 
 import java.util.List;
-import project1.strategy.MatchmakingStrategy;
+import org.example.strategy.MatchmakingStrategy;
 
 public class MatchingSystem {
   private MatchmakingStrategy matchmakingStrategy;
@@ -11,7 +11,6 @@ public class MatchingSystem {
   }
 
 
-  // 設置新的策略
   public void setStrategy(MatchmakingStrategy strategy) {
     this.matchmakingStrategy = strategy;
   }
