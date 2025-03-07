@@ -5,18 +5,18 @@ import java.util.List;
 public class Exchange {
 
   private int currentCount = 3;//当前交换次数
-  private Player self;
-  private Player exchangee;
+  private ShowdownPlayer self;
+  private ShowdownPlayer exchangee;
   private boolean isExchange = false;
 
-  public Exchange(Player self) {
+  public Exchange(ShowdownPlayer self) {
     this.self = self;
   }
 
-  public void exchangeHandCards(Player self, Player exchangee) {
+  public void exchangeHandCards(ShowdownPlayer self, ShowdownPlayer exchangee) {
     if (!isExchange) {
-      List<Card> exchangeeCards = exchangee.getCardsInHand();
-      List<Card> selfCards = self.getCardsInHand();
+      List<ShowdownCard> exchangeeCards = exchangee.getCardsInHand();
+      List<ShowdownCard> selfCards = self.getCardsInHand();
 
       self.setCardsInHand(exchangeeCards);
       exchangee.setCardsInHand(selfCards);
@@ -49,7 +49,7 @@ public class Exchange {
     return currentCount;
   }
 
-  public Player getExchangee() {
+  public ShowdownPlayer getExchangee() {
     return exchangee;
   }
 }

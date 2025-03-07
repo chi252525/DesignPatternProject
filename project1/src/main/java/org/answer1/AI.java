@@ -20,16 +20,16 @@ public class AI extends Player {
     }
 
     @Override
-    protected Optional<tw.waterballsa.designpattern.c1m1h1.ExchangeHands> makeExchangeHandsDecision() {
+    protected Optional<ExchangeHands> makeExchangeHandsDecision() {
         if (hasUsedExchangeHands()) {
             return empty();
         }
         return random.nextBoolean() ? empty() : of(randomlyExchangeHands());
     }
 
-    private tw.waterballsa.designpattern.c1m1h1.ExchangeHands randomlyExchangeHands() {
+    private ExchangeHands randomlyExchangeHands() {
         List<Player> players = showdown.getPlayers();
-        return new tw.waterballsa.designpattern.c1m1h1.ExchangeHands(this, players.get(random.nextInt(players.size())));
+        return new ExchangeHands(this, players.get(random.nextInt(players.size())));
     }
 
     @Override
@@ -40,7 +40,7 @@ public class AI extends Player {
         return getHand().show(random.nextInt(getHand().size()));
     }
 
-    public void setShowdown(tw.waterballsa.designpattern.c1m1h1.Showdown showdown) {
+    public void setShowdown(Showdown showdown) {
         this.showdown = showdown;
     }
 }

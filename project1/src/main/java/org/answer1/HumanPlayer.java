@@ -11,7 +11,9 @@ import static java.util.Optional.of;
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
 import static java.util.stream.IntStream.range;
-import static tw.waterballsa.designpattern.c1m1h1.Utils.*;
+import static org.answer1.Utils.print;
+import static org.answer1.Utils.printf;
+import static org.answer1.Utils.println;
 
 /**
  * @author - johnny850807@gmail.com (Waterball)

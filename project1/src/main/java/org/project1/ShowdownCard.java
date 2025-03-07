@@ -1,21 +1,13 @@
 package org.project1;
 
-public class Card implements Comparable<Card> {
+public class ShowdownCard implements Comparable<ShowdownCard> {
 
   private Suit suit;
   private Rank rank;
 
-  public Card(Suit suit, Rank rank) {
+  public ShowdownCard(Suit suit, Rank rank) {
     this.suit = suit;
     this.rank = rank;
-  }
-
-  public Suit getSuit() {
-    return suit;
-  }
-
-  public Rank getRank() {
-    return rank;
   }
 
   @Override
@@ -24,7 +16,7 @@ public class Card implements Comparable<Card> {
   }
 
   @Override
-  public int compareTo(Card other) {
+  public int compareTo(ShowdownCard other) {
     if (rank.getOrder() == other.rank.getOrder()) {
       return suit.getOrder() - other.suit.getOrder();
     }

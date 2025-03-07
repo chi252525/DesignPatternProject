@@ -11,13 +11,13 @@ import static java.util.Optional.ofNullable;
  */
 public abstract class Player {
     protected int point;
-    protected tw.waterballsa.designpattern.c1m1h1.Showdown showdown;
+    protected Showdown showdown;
     private String name;
     private Hand hand = new Hand();
     private ExchangeHands exchangeHands;
 
-    protected tw.waterballsa.designpattern.c1m1h1.TurnMove takeTurn() {
-        tw.waterballsa.designpattern.c1m1h1.TurnMove turnMove = new tw.waterballsa.designpattern.c1m1h1.TurnMove(this, hasUsedExchangeHands() ?
+    protected TurnMove takeTurn() {
+        TurnMove turnMove = new TurnMove(this, hasUsedExchangeHands() ?
                 empty() : makeExchangeHandsDecision(), showCard());
         turnMove.getExchangeHands().ifPresent(this::setExchangeHands);
         getExchangeHands().ifPresent(ExchangeHands::countdown);
@@ -30,7 +30,7 @@ public abstract class Player {
 
     protected abstract Card showCard();
 
-    public void setShowdown(tw.waterballsa.designpattern.c1m1h1.Showdown showdown) {
+    public void setShowdown(Showdown showdown) {
         this.showdown = showdown;
     }
 

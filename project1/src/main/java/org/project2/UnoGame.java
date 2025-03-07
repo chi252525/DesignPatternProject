@@ -1,0 +1,16 @@
+package org.project2;
+
+import org.templete.AbstractGame;
+
+public class UnoGame extends AbstractGame<UnoPlayer, UnoCard> {
+
+
+
+
+  @Override
+  public UnoPlayer createRandomPlayer(String name) {
+    return new AIPlayer(name);
+  }
+
+
+}

@@ -3,14 +3,16 @@ package org.answer1;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import org.answer1.Card;
 
 import static java.util.Collections.max;
 import static java.util.Comparator.comparing;
 import static java.util.Comparator.comparingInt;
 import static java.util.stream.Collectors.joining;
-import static tw.waterballsa.designpattern.c1m1h1.Utils.print;
-import static tw.waterballsa.designpattern.c1m1h1.Utils.println;
-import static tw.waterballsa.designpattern.c1m1h1.Utils.printf;
+import static org.answer1.Utils.print;
+import static org.answer1.Utils.printf;
+import static org.answer1.Utils.println;
+
 
 /**
  * @author - johnny850807@gmail.com (Waterball)
@@ -19,7 +21,7 @@ public class Showdown {
     public static final int NUM_OF_ROUNDS = 13;
     private final Deck deck;
     private final List<Player> players;
-    private final List<tw.waterballsa.designpattern.c1m1h1.TurnMove> turnMoves = new ArrayList<>();
+    private final List<TurnMove> turnMoves = new ArrayList<>();
 
     public Showdown(Deck deck, List<Player> players) {
         this.deck = deck;
@@ -59,13 +61,13 @@ public class Showdown {
 
     private void takeTurn(Player player) {
         printf("It's %s's turn.\n", player.getName());
-        tw.waterballsa.designpattern.c1m1h1.TurnMove turnMove = player.takeTurn();
+        TurnMove turnMove = player.takeTurn();
         turnMoves.add(turnMove);
     }
 
     private void showdown() {
         printShowCards();
-        tw.waterballsa.designpattern.c1m1h1.TurnMove winnerTurnMove = max(turnMoves, comparing(TurnMove::getShowCard));
+        TurnMove winnerTurnMove = max(turnMoves, comparing(TurnMove::getShowCard));
         Player winner = winnerTurnMove.getPlayer();
         winner.gainPoint();
         printf("%s wins this round.\n", winner.getName());
