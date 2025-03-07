@@ -19,9 +19,6 @@ public class ShowdownGame extends AbstractGame<ShowdownPlayer, ShowdownCard> {
       }
     } while (!deck.getStandardCards().isEmpty());
 
-    for (AbstractPlayer player : playersInGame) {
-      player.showCardsInHand(); //發牌
-    }
   }
 
   @Override

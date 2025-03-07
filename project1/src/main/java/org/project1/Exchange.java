@@ -24,8 +24,7 @@ public class Exchange {
     this.exchangee = exchangee;
     isExchange = true;
     System.out.println(self.getName() + "和" + exchangee.getName() + "手牌交換完成");
-    self.showCardsInHand();
-    exchangee.showCardsInHand();
+
   }
 
   public void countDown() {

@@ -39,12 +39,6 @@ public abstract class AbstractPlayer<Card> {
 
   public abstract Card showCard();
 
-  public void showCardsInHand() {
-    System.out.println(this.name + "手上的牌:");
-    for (Card card : cardsInHand) {
-      System.out.println(card.toString());
-    }
-  }
 
   @Override
   public boolean equals(Object obj) {
