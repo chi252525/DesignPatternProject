@@ -1,11 +1,9 @@
 package showdown;
 
-import javax.smartcardio.Card;
-
 public class ShowdownCard implements Comparable<ShowdownCard> {
 
-  private Suit suit;
-  private Rank rank;
+  private final Suit suit;
+  private final Rank rank;
 
   public ShowdownCard(Suit suit, Rank rank) {
     this.suit = suit;

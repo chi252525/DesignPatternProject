@@ -3,38 +3,16 @@ package showdown;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import templete.AbstractPlayer;
 
-public abstract class ShowdownPlayer {
+public abstract class ShowdownPlayer extends AbstractPlayer<ShowdownCard> {
 
-  private String name;
-  private List<ShowdownCard> cardsInHand = new ArrayList<>();
-  private int points = 0;
+   private int points = 0;
 
   private Exchange exchange = new Exchange(this);
 
   public ShowdownPlayer(String name) {
     nameHimself(name);
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public List<ShowdownCard> getCardsInHand() {
-    return cardsInHand;
-  }
-
-  public void setCardsInHand(List<ShowdownCard> cardsInHand) {
-    this.cardsInHand = cardsInHand;
-  }
-
-  private void nameHimself(String name) {
-    this.name = name;
-    System.out.println(" name :" + name);
-  }
-
-  public void gainCard(ShowdownCard card) {
-    cardsInHand.add(card);
   }
 
   public void gainPoints(int points) {
@@ -61,27 +39,11 @@ public abstract class ShowdownPlayer {
   private void makeDecision(ShowdownPlayer exchangee) {
     Random random = new Random();
     if (random.nextBoolean() && !exchange.isExchange()) {
-      System.out.println(this.name + "決定和" + exchangee.getName() + "交換手牌");
+      System.out.println(this.getName() + "決定和" + exchangee.getName() + "交換手牌");
       exchange.exchangeHandCards(this, exchangee);
     }
   }
 
   public abstract ShowdownCard showCard();
-
-  public void showCardsInHand() {
-    System.out.println(this.name + "手上的牌:");
-    for (ShowdownCard card : cardsInHand) {
-      System.out.println(card.toString());
-    }
-  }
-
-  @Override
-  public boolean equals(Object obj) {
-    if (obj instanceof ShowdownPlayer) {
-      ShowdownPlayer player = (ShowdownPlayer) obj;
-      return this.name.equals(player.getName());
-    }
-    return false;
-  }
 
 }
