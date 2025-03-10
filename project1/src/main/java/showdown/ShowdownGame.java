@@ -5,13 +5,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import javax.smartcardio.Card;
 
 public class ShowdownGame {
 
-  private List<Player> playersInGame = new ArrayList<>();
-  private Player lastWinner;
+  private List<ShowdownPlayer> playersInGame = new ArrayList<>();
+  private ShowdownPlayer lastWinner;
 
-  private Player winner;//在回合中赢家
+  private ShowdownPlayer winner;//在回合中赢家
 
   public void start() {
     ShowdownDeck deck = new ShowdownDeck();
@@ -20,12 +21,12 @@ public class ShowdownGame {
     }
 
     do {
-      for (Player player : playersInGame) {
+      for (ShowdownPlayer player : playersInGame) {
         deck.drawCard(player);   //發牌
       }
     } while (!deck.getStandardCards().isEmpty());
 
-    for (Player player : playersInGame) {
+    for (ShowdownPlayer player : playersInGame) {
       player.showCardsInHand();
       //發牌
     }
@@ -37,7 +38,7 @@ public class ShowdownGame {
     showTheLastWinner();
   }
 
-  private Player createRandomPlayer(String name) {
+  private ShowdownPlayer createRandomPlayer(String name) {
     Random random = new Random();
     if (random.nextBoolean()) {
       return new HumanPlayer(name);
@@ -46,28 +47,28 @@ public class ShowdownGame {
     }
   }
 
-  private void initPlayer(Player player) {
+  private void initPlayer(ShowdownPlayer player) {
     playersInGame.add(player);
   }
 
 
-  public void startRound(List<Player> players) {
+  public void startRound(List<ShowdownPlayer> players) {
     playInRound(players);
     showTheWinnerInRound();
   }
 
 
-  public void playInRound(List<Player> players) {
-    Map<Player, Card> cardsInRound = new HashMap<>() {
+  public void playInRound(List<ShowdownPlayer> players) {
+    Map<ShowdownPlayer, ShowdownCard> cardsInRound = new HashMap<>() {
     };//在回合中出的牌
 
     //每个玩家出一张牌
-    for (Player currentPlayer : players) {
+    for (ShowdownPlayer currentPlayer : players) {
 
-      Player choiceExchangee = getExchangePlayer(players, currentPlayer);
+      ShowdownPlayer choiceExchangee = getExchangePlayer(players, currentPlayer);
       //隨機選擇一個玩家交換手牌
       currentPlayer.checkExchangeHandCard(choiceExchangee);
-      Card playerShowCard = currentPlayer.showCard();
+      ShowdownCard playerShowCard = currentPlayer.showCard();
       if (playerShowCard != null) {
         cardsInRound.put(currentPlayer, playerShowCard);
       } else {
@@ -77,36 +78,36 @@ public class ShowdownGame {
     }
     //显示每个玩家出的牌
 
-    for (Map.Entry<Player, Card> entry : cardsInRound.entrySet()) {
-      Player player = entry.getKey();
-      Card card = entry.getValue();
+    for (Map.Entry<ShowdownPlayer, ShowdownCard> entry : cardsInRound.entrySet()) {
+      ShowdownPlayer player = entry.getKey();
+      ShowdownCard card = entry.getValue();
       System.out.println(player.getName() + " 出了 " + card.toString());
     }
 
     //确定赢家
     winner = null;
-    Card maxCard = null;
-    for (Map.Entry<Player, Card> entry : cardsInRound.entrySet()) {
-      Player player = entry.getKey();
+    ShowdownCard maxCard = null;
+    for (Map.Entry<ShowdownPlayer, ShowdownCard> entry : cardsInRound.entrySet()) {
+      ShowdownPlayer player = entry.getKey();
       if (winner == null) {
         winner = player;
         maxCard = entry.getValue();
       }
-      Card card = entry.getValue();
+      ShowdownCard card = entry.getValue();
       int compare = card.compareTo(maxCard);
       if (compare > 0) {
         winner = player;
         maxCard = card;
       }
     }
-    Card winnerCard = cardsInRound.get(winner);
+    ShowdownCard winnerCard = cardsInRound.get(winner);
     System.out.println(winner.getName() + " 贏家出的牌為： " + winnerCard.toString());
     winner.gainPoints(1);
   }
 
-  private Player getExchangePlayer(List<Player> players, Player currentPlayer) {
+  private ShowdownPlayer getExchangePlayer(List<ShowdownPlayer> players, ShowdownPlayer currentPlayer) {
     Random random = new Random();
-    Player exchangee;
+    ShowdownPlayer exchangee;
 
     do {
       int index = random.nextInt(players.size());
@@ -123,7 +124,7 @@ public class ShowdownGame {
 
   private void showTheLastWinner() {
     lastWinner = playersInGame.get(0);
-    for (Player player : playersInGame) {
+    for (ShowdownPlayer player : playersInGame) {
       if (player.getPoints() > lastWinner.getPoints()) {
         lastWinner = player;
       }

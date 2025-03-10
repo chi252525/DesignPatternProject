@@ -2,15 +2,16 @@ package showdown;
 
 import java.util.List;
 import java.util.Scanner;
+import javax.smartcardio.Card;
 
-public class HumanPlayer extends Player {
+public class HumanPlayer extends ShowdownPlayer {
 
   public HumanPlayer(String name) {
     super(name + " (HumanPlayer)");
   }
 
   @Override
-  public Card showCard() {
+  public ShowdownCard showCard() {
     if (getCardsInHand().isEmpty()) { // 手牌为空
       return null;
     }
@@ -18,7 +19,7 @@ public class HumanPlayer extends Player {
     System.out.println("請選擇要出的牌:");
 
     // 玩家手牌
-    List<Card> cardsInHand = getCardsInHand();
+    List<ShowdownCard> cardsInHand = getCardsInHand();
     for (int i = 0; i < cardsInHand.size(); i++) {
       System.out.println((i + 1) + ". " + cardsInHand.get(i) + "card: " + cardsInHand.get(i)
           .toString()); // 输出手牌和对应的索引

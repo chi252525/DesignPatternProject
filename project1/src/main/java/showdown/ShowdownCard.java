@@ -1,11 +1,13 @@
 package showdown;
 
-public class Card implements Comparable<Card> {
+import javax.smartcardio.Card;
+
+public class ShowdownCard implements Comparable<ShowdownCard> {
 
   private Suit suit;
   private Rank rank;
 
-  public Card(Suit suit, Rank rank) {
+  public ShowdownCard(Suit suit, Rank rank) {
     this.suit = suit;
     this.rank = rank;
   }
@@ -24,7 +26,7 @@ public class Card implements Comparable<Card> {
   }
 
   @Override
-  public int compareTo(Card other) {
+  public int compareTo(ShowdownCard other) {
     if (rank.getOrder() == other.rank.getOrder()) {
       return suit.getOrder() - other.suit.getOrder();
     }

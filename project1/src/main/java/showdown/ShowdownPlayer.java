@@ -4,15 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public abstract class Player {
+public abstract class ShowdownPlayer {
 
   private String name;
-  private List<Card> cardsInHand = new ArrayList<>();
+  private List<ShowdownCard> cardsInHand = new ArrayList<>();
   private int points = 0;
 
   private Exchange exchange = new Exchange(this);
 
-  public Player(String name) {
+  public ShowdownPlayer(String name) {
     nameHimself(name);
   }
 
@@ -20,11 +20,11 @@ public abstract class Player {
     return name;
   }
 
-  public List<Card> getCardsInHand() {
+  public List<ShowdownCard> getCardsInHand() {
     return cardsInHand;
   }
 
-  public void setCardsInHand(List<Card> cardsInHand) {
+  public void setCardsInHand(List<ShowdownCard> cardsInHand) {
     this.cardsInHand = cardsInHand;
   }
 
@@ -33,7 +33,7 @@ public abstract class Player {
     System.out.println(" name :" + name);
   }
 
-  public void gainCard(Card card) {
+  public void gainCard(ShowdownCard card) {
     cardsInHand.add(card);
   }
 
@@ -46,7 +46,7 @@ public abstract class Player {
   }
 
 
-  public void checkExchangeHandCard(Player exchangee) {
+  public void checkExchangeHandCard(ShowdownPlayer exchangee) {
     if (exchange.isExchange()
         && exchange.getExchangee() != null) {
       System.out.println(this.getName() + "和" + exchange.getExchangee().getName() + "手牌交換中");
@@ -58,7 +58,7 @@ public abstract class Player {
     }
   }
 
-  private void makeDecision(Player exchangee) {
+  private void makeDecision(ShowdownPlayer exchangee) {
     Random random = new Random();
     if (random.nextBoolean() && !exchange.isExchange()) {
       System.out.println(this.name + "決定和" + exchangee.getName() + "交換手牌");
@@ -66,19 +66,19 @@ public abstract class Player {
     }
   }
 
-  public abstract Card showCard();
+  public abstract ShowdownCard showCard();
 
   public void showCardsInHand() {
     System.out.println(this.name + "手上的牌:");
-    for (Card card : cardsInHand) {
+    for (ShowdownCard card : cardsInHand) {
       System.out.println(card.toString());
     }
   }
 
   @Override
   public boolean equals(Object obj) {
-    if (obj instanceof Player) {
-      Player player = (Player) obj;
+    if (obj instanceof ShowdownPlayer) {
+      ShowdownPlayer player = (ShowdownPlayer) obj;
       return this.name.equals(player.getName());
     }
     return false;
