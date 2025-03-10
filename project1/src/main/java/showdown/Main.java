@@ -1,10 +1,10 @@
-package org.project1;
+package showdown;
 
 public class Main {
 
   public static void main(String[] args) {
-    Game game = new Game();
-    game.startGame();
+    ShowdownGame game = new ShowdownGame();
+    game.start();
     System.out.println("game end!");
   }
 

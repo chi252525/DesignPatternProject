@@ -1,4 +1,4 @@
-package org.project1;
+package showdown;
 
 import java.util.List;
 import java.util.Scanner;

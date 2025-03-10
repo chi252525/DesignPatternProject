@@ -1,4 +1,4 @@
-package org.project1;
+package showdown;
 
 import java.util.Random;
 

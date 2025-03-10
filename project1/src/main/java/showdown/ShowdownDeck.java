@@ -1,14 +1,14 @@
-package org.project1;
+package showdown;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Deck {
+public class ShowdownDeck {
 
   private List<Card> standardCards = new ArrayList<>();
 
-  public Deck() {
+  public ShowdownDeck() {
     Suit[] suits = Suit.values();
     Rank[] ranks = Rank.values();
     for (Suit suit : suits) {
