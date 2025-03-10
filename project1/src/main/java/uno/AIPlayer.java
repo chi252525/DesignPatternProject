@@ -8,6 +8,10 @@ import java.util.Random;
 
 public class AIPlayer extends UnoPlayer {
   private static final Random random = new Random();
+
+  public AIPlayer(String name) {
+    nameHimself(name);
+  }
   @Override
   public TurnMove takeTurn(UnoCard topUnoCard) {
     int[] legalCardIndices =

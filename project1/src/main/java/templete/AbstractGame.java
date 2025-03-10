@@ -53,7 +53,7 @@ public abstract class AbstractGame<Player extends AbstractPlayer<Card>, Card> {
   }
 
   protected void onRoundEnd() {
-    //hook
+    //hook 只有showdown會用到
   }
 
   protected void nextTurn() {

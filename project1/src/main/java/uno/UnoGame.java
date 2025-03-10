@@ -14,6 +14,11 @@ public class UnoGame extends AbstractGame<UnoPlayer, UnoCard> {
   }
 
   @Override
+  protected void onGameBegins() {
+    topUnoCard = deck.drawCard();
+  }
+
+  @Override
   protected void takeTurn(UnoPlayer nextPlayer) {
     TurnMove turnMove = nextPlayer.takeTurn(topUnoCard);
     if (turnMove.isPass()) {
@@ -62,8 +67,8 @@ public class UnoGame extends AbstractGame<UnoPlayer, UnoCard> {
   }
 
   @Override
-  public UnoPlayer createRandomPlayer(String s) {
-    return new AIPlayer();
+  public UnoPlayer createRandomPlayer(String name) {
+    return new AIPlayer(name);
   }
 
   @Override
